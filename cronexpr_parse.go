@@ -218,6 +218,10 @@ func (expr *Expression) secondFieldHandler(s string) error {
 
 /******************************************************************************/
 
+func (expr *Expression) MinuteFieldHandler(s string) error {
+	return expr.minuteFieldHandler(s)
+}
+
 func (expr *Expression) minuteFieldHandler(s string) error {
 	var err error
 	expr.minuteList, err = genericFieldHandler(s, minuteDescriptor)
@@ -226,6 +230,10 @@ func (expr *Expression) minuteFieldHandler(s string) error {
 
 /******************************************************************************/
 
+func (expr *Expression) HourFieldHandler(s string) error {
+	return expr.hourFieldHandler(s)
+}
+
 func (expr *Expression) hourFieldHandler(s string) error {
 	var err error
 	expr.hourList, err = genericFieldHandler(s, hourDescriptor)
@@ -233,6 +241,10 @@ func (expr *Expression) hourFieldHandler(s string) error {
 }
 
 /******************************************************************************/
+
+func (expr *Expression) MonthFieldHandler(s string) error {
+	return expr.monthFieldHandler(s)
+}
 
 func (expr *Expression) monthFieldHandler(s string) error {
 	var err error
@@ -287,6 +299,10 @@ func genericFieldHandler(s string, desc fieldDescriptor) ([]int, error) {
 	return toList(values), nil
 }
 
+func (expr *Expression) DowFieldHandler(s string) error {
+	return expr.dowFieldHandler(s)
+}
+
 func (expr *Expression) dowFieldHandler(s string) error {
 	expr.daysOfWeekRestricted = true
 	expr.daysOfWeek = make(map[int]bool)
@@ -326,6 +342,10 @@ func (expr *Expression) dowFieldHandler(s string) error {
 		}
 	}
 	return nil
+}
+
+func (expr *Expression) DomFieldHandler(s string) error {
+	return expr.domFieldHandler(s)
 }
 
 func (expr *Expression) domFieldHandler(s string) error {
